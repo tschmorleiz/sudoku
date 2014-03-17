@@ -5,10 +5,26 @@
 - - -
 
 ##### Table of Contents  
+* [Usage](#usage)
 * [Features](#features)
 * [Technologies](#technologies)
 * [Architecture](#architecture)
 * [Possible improvements](#possible-improvements)
+
+
+## Usage
+
+To install all dependencies run:
+
+    $ npm install
+    
+Next fire up mongoDB:
+
+    $ mongod
+    
+Then start the server:
+
+    $ npm start
 
 ## Features
 
