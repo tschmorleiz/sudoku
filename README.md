@@ -134,6 +134,7 @@ For each of these models there exists a view.
 ## Possible improvements
 
 * Make use of HTTPS, then use kik.sign for proper authentication
+* For production mode: concatenate/minify JS/CSS
 * Load client-sided models and views as modules, e.g. using [require.js](requirejs.org)
 * Do browser testing, e.g. using [selenium](http://docs.seleniumhq.org/), [mocha.js](visionmedia.github.io/mocha/)
 * When playing a game, live-update the status of other players' progress, e.g. using server-sent events
