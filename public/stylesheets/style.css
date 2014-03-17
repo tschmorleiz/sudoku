@@ -9,7 +9,7 @@ body,html {
 
 a {
   color:#55a;
-  text-decoration: none;
+  text-decoration:none;
 }
 
 #page-header {
@@ -34,30 +34,29 @@ footer {
   color:#FFF;
   font-family:Helvetica, Arial;
   text-shadow:0 0 4px #A61000;
-  text-align: center;
-  margin-top: 8px;
+  text-align:center;
+  margin-top:8px;
 }
 
 #content {
-  width: 610px;
-  margin: 0px auto;
+  width:610px;
+  margin:0 auto;
 }
 
 nav {
-  margin:15px auto 0;
   width:100%;
-  height: 30px;
+  height:30px;
+  margin:15px auto 0;
 }
 
 nav ul {
-  padding: 0px;
-  margin-bottom: 10px;
+  margin-bottom:10px;
+  padding:0;
 }
 
 nav li {
-  float: left;
-  display: block;
-  
+  float:left;
+  display:block;
 }
 
 .button {
@@ -69,47 +68,44 @@ nav li {
 }
 
 .boxes {
-  clear: both;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.boxes,.boxes table {
-  background-color: black;
-  border-spacing:0px;
-  table-layout:fixed;
-}
-
-.boxes {
+  clear:both;
+  margin-left:auto;
+  margin-right:auto;
   border-spacing:1px;
 }
 
-.boxes tr, .boxes td {
+.boxes,.boxes table {
+  background-color:#000;
+  border-spacing:0;
+  table-layout:fixed;
+}
+
+.boxes tr,.boxes td {
   padding:0;
 }
 
 input[disabled] {
-  background-color: #ddd;
+  background-color:#ddd;
   box-shadow:inset 0 0 10px #bbb;
 }
 
 input.conflict {
-  background-color: red;
+  background-color:red;
 }
 
 input {
-  font-family: Verdana;
+  font-family:Verdana;
   font-size:30px;
-  margin:0;
   text-align:center;
   width:90%;
+  margin:0;
 }
 
 input[type=submit] {
-  background-color: #222;
-  color: #fff;
+  background-color:#222;
+  color:#fff;
   border:none;
-  border-radius: 2px;
+  border-radius:2px;
   box-shadow:0 0 3px #000;
   font-size:22px;
   height:30px;
@@ -139,8 +135,8 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
 
 .boxes input {
   border:solid 1px;
-  width: 62px;
-  height: 62px;
+  width:62px;
+  height:62px;
 }
 
 #user {
@@ -149,7 +145,7 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
 }
 
 #user span {
-  font-size: 12px;
+  font-size:12px;
   float:left;
   margin-right:4px;
   margin-top:8px;
@@ -181,52 +177,49 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
   box-shadow:0 0 5px rgba(0,0,0,0.2), inset 0 0 50px rgba(0,0,0,0.2);
   color:#333;
   height:674px;
-  padding: 3px 8px;
   width:100%;
-  overflow: auto;
+  overflow:auto;
+  padding:3px 8px;
 }
 
 #game-header {
-  margin-top: 5px;
-  padding-left: 3px;
+  margin-top:5px;
+  padding-left:3px;
 }
 
 #game-header div {
-  margin: 10px 0px;
+  margin:10px 0;
 }
 
 article h1 {
-  font-size: 18px;
-  margin: 7px 0px 3px 0px;
+  font-size:18px;
+  margin:7px 0 3px;
 }
 
 #game-header a {
   border-radius:2px;
   box-shadow:0 0 5px #000;
-  margin-right: 5px;
+  margin-right:5px;
   padding:3px;
 }
 
 #others-game-states {
-  margin-top: 10px;
+  margin-top:10px;
 }
 
-
-/* using available space */
-@media all and (max-width: 700px) and (min-width: 481px), all and (max-height: 790px) and (min-height: 561px) {
-
+@media all and max-width 700px and min-width 481px,all and max-height 790px and min-height 561px {
   #content {
     width:400px;
   }
-
+  
   #board {
     height:480px;
   }
-
+  
   #nav {
     width:425px;
   }
-
+  
   .boxes input {
     width:40px;
     height:38px;
@@ -234,59 +227,55 @@ article h1 {
   }
 }
 
-@media all and (max-width: 480px) and (min-width: 321px), all and (max-height: 560px) and (min-height: 411px) {
-
-  #content{
+@media all and max-width 480px and min-width 321px,all and max-height 560px and min-height 411px {
+  #content {
     width:260px;
   }
   
-  #board {  
+  #board {
     height:355px;
   }
-
+  
   #nav {
     width:285px;
   }
-
+  
   .boxes input {
     width:24px;
     height:24px;
     font-size:18px;
   }
-
 }
 
-@media all and (max-width: 320px), all and (max-height: 410px){
-
+@media all and max-width 320px,all and max-height 410px {
   #content {
     width:180px;
   }
-
+  
   #board {
     height:260px;
   }
-
+  
   nav {
     width:205px;
-    font-size: 15px;
+    font-size:15px;
   }
-
+  
   .boxes input {
     width:15px;
     height:15px;
-    font-size: 12px;
+    font-size:12px;
   }
-
+  
   article h1 {
-    font-size: 12px;
+    font-size:12px;
   }
-
-  .game-header  {
-    font-size: 13px;
+  
+  .game-header {
+    font-size:13px;
   }
-
+  
   #user span {
-    display: none;
+    display:none;
   }
-
 }
