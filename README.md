@@ -5,10 +5,26 @@
 - - -
 
 ##### Table of Contents  
+* [Usage](#usage)
 * [Features](#features)
 * [Technologies](#technologies)
 * [Architecture](#architecture)
 * [Possible improvements](#possible-improvements)
+
+
+## Usage
+
+To install all dependencies run:
+
+    $ npm install
+    
+Next fire up mongoDB:
+
+    $ mongod
+    
+Then start the server:
+
+    $ npm start
 
 ## Features
 
@@ -133,8 +149,7 @@ For each of these models there exists a view.
 
 ## Possible improvements
 
-* Make use of HTTPS, then use [Kik' auth support](http://dev.kik.com/docs/#identity-auth) for proper authentication for login
-* Concatenate/minify JS/CSS for production mode
+* Make use of HTTPS, then use kik.sign for proper authentication
 * Load client-sided models and views as modules, e.g. using [require.js](requirejs.org)
-* Do browser testing, e.g. using [selenium](http://docs.seleniumhq.org/) and [mocha.js](visionmedia.github.io/mocha/)
+* Do browser testing, e.g. using [selenium](http://docs.seleniumhq.org/), [mocha.js](visionmedia.github.io/mocha/)
 * When playing a game, live-update the status of other players' progress, e.g. using server-sent events
