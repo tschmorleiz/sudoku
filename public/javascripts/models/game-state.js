@@ -67,6 +67,8 @@ Sudoku.Models.GameState = Backbone.Model.extend({
     }
   },
 
+
+  // remove from localStorage
   removeLocally: function() {
     var storage = JSON.parse(localStorage.getItem('gameStates')) || {};
     delete storage[this.get('id')];
@@ -121,6 +123,7 @@ Sudoku.Models.GameStates = Backbone.Collection.extend({
 
   urlRoot: "/api/game-states",
 
+  // in_progress < solved < quit
   comparator: function(model) {
     var order = {
       'in_progress' : 0,
@@ -130,6 +133,7 @@ Sudoku.Models.GameStates = Backbone.Collection.extend({
     return order[model.get('stateName')];
   },
 
+  // clean localStorage from game states which are no longer needed
   cleanLocally: function() {
     var storage = JSON.parse(localStorage.getItem('gameStates')) || {};
     for(gameId in storage) {

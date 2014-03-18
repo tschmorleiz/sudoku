@@ -49,6 +49,7 @@ Sudoku.Views.GameState = Backbone.View.extend({
         }
       }
     }
+
     // render other players' progress
     this.showStatus(this.model.updateStatus());
     this.others.fetch({
@@ -106,6 +107,7 @@ Sudoku.Views.GameState = Backbone.View.extend({
     }
   },
 
+  // quit a game and navigate to home
   quit: function(e) {
     this.model.quit(function() {
       Sudoku.router.navigate('#', true);
@@ -153,6 +155,7 @@ Sudoku.Views.GameState = Backbone.View.extend({
   
 });
 
+// view for status of other players
 Sudoku.Views.OtherGameState = Backbone.View.extend({
 
   initialize: function() {

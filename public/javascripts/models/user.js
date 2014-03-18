@@ -5,6 +5,8 @@ Sudoku.Models.User = Backbone.Model.extend({
 
   urlRoot: "/api/users",
 
+
+  // login and populate model with user from response
   login: function(callback) {
     var that = this;
     $.post(this.urlRoot + '/login', this.toJSON(), function(user) {
