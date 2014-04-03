@@ -5,6 +5,7 @@
   <meta name="description" content="A short description of this webpage">
   <link rel="kik-icon" href="/images/logo.png">
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/stylesheets/default.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
   <link href="//fonts.googleapis.com/css?family=Revalia" rel="stylesheet" type="text/css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
@@ -79,10 +80,10 @@
 
 </head>
 <body>
-  <header id="page-header">
-    <h1>SUDOKU</h1>
-    <div id="user"></div>
-  </header>
+  <div class="app-topbar">
+    <div class="app-title">SUDOKU</div>
+    <div class="right app-button" id="user"></div>
+  </div>
   <div id="content">
     <nav>
       <ul>
@@ -95,7 +96,8 @@
   <footer>
     <span>Created with &hearts; in Germany.</span>
   </footer>
-
+  <script src="http://zeptojs.com/zepto.min.js"></script>
+  <script src="http://cdn.kik.com/app/1/app.js"></script>
   <script src="/javascripts/main.js"> </script>
 </body>
 </html>

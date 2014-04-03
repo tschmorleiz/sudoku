@@ -13,7 +13,6 @@ Sudoku.Views.User = Backbone.View.extend({
     render:function () {
         var template = Handlebars.compile($('#user-template').html());
         var html = template({
-        	fullName: this.model.get('fullName'),
         	thumbnail: this.model.get('thumbnail')
         });
         $(this.el).html(html);
