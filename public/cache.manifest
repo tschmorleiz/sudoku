@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# v0000
+# v0
 
 # JAVASCRIPT
 /javascripts/handlebars.js
@@ -8,7 +8,6 @@ CACHE MANIFEST
 /javascripts/models/game.js
 /javascripts/models/invitation.js
 /javascripts/models/game-state.js
-/javascripts/views/user.js
 /javascripts/views/game-state.js
 /javascripts/views/new-game.js
 /javascripts/views/invitations.js
@@ -17,9 +16,11 @@ CACHE MANIFEST
 
 # CSS
 /stylesheets/style.css
+/stylesheets/default.css
 
 # IMAGES
 /images/wood.png
+/images/kik_it_white.png
 
 # OTHER
 //fonts.googleapis.com/css?family=Revalia
