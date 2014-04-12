@@ -13,7 +13,6 @@ Sudoku.Views.GameState = Backbone.View.extend({
   initialize: function() {
     this.others = new Sudoku.Models.GameStates();
     this.others.url = this.others.urlRoot + '/' + this.model.get('id') + '/others';
-    this.render();
   },
 
   // render board as nested tables
@@ -50,8 +49,11 @@ Sudoku.Views.GameState = Backbone.View.extend({
       }
     }
 
-    // render other players' progress
+    $('.app-title').html(this.model.get('game').name)
+
+    
     this.showStatus(this.model.updateStatus());
+    // render other players' progress
     this.others.fetch({
       success: function(gameStates) {
         if (gameStates.length === 1) {
@@ -102,6 +104,7 @@ Sudoku.Views.GameState = Backbone.View.extend({
     }
     // in case game was solved or quit, disable all inputs
     if (this.model.get('stateName') !== 'in_progress') {
+      $('.app-title').html(this.model.get('game').name + ' (' + this.model.get('stateName') + ')')
       $(this.el).find('input').attr('disabled','disabled');
       $(this.el).find('#quit').hide();
     }
