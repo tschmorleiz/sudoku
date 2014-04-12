@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html manifest="/cache.manifest">
+<html>
 <head>
   <title>Sudoku</title>
+   <meta name="viewport" content="width=device-width,
+                                   initial-scale=1.0,
+                                   maximum-scale=1.0,
+                                   user-scalable=no">
   <meta name="description" content="A short description of this webpage">
   <link rel="kik-icon" href="/images/logo.png">
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/stylesheets/default.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <link href="//fonts.googleapis.com/css?family=Revalia" rel="stylesheet" type="text/css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
@@ -17,7 +23,6 @@
   <script src="/javascripts/models/game.js"></script>
   <script src="/javascripts/models/invitation.js"></script>
   <script src="/javascripts/models/game-state.js"></script>
-  <script src="/javascripts/views/user.js"></script>
   <script src="/javascripts/views/game-state.js"></script>
   <script src="/javascripts/views/new-game.js"></script>
   <script src="/javascripts/views/invitations.js"></script>
@@ -25,77 +30,100 @@
 
   <!-- template for form for creating a new game -->
   <script id="new-game-form-template" type="text/x-handlebars-template">
-      <h1>Ok, new game!<br>Give it a name:</h1>
-      <form>
-        <p>
-          <input type="text" required="required">
-        </p>
-        <p>
-          <input type="submit" value="Start!">
-        </p>
-      </form>
+    <div class="app-section" id="new-game">
+      <input type="text" placeholder="Please enter a name!"><i id="create" class="fa fa-check-circle"></i>
+    </div>
   </script>
 
   <!-- template for a game state -->
   <script id="game-state-template" type="text/x-handlebars-template">
-      <header id="game-header">
-        <h1>{{gameState.game.name}} (<span id="state-name"></span>)</h1>
-        <div>
-          <a id="quit">Quit</a>
-          <a id="invite">Invite</a>
-        </div>
-      </header>
-      {{#squaretable 3 "boxes"}}
-        {{#squaretable 3 "box"}}
-          <input type="number" maxlength="1" pattern=\"[0-9]*">
+      <div class="app-section">
+        <header id="game-header">
+          <div>
+            <a id="quit"><i class="fa fa-trash-o fa-2x"></i></a>
+            <a class="kik-it" id="invite">&nbsp;</a>
+          </div>
+        </header>
+        {{#squaretable 3 "boxes"}}
+          {{#squaretable 3 "box"}}
+            <input type="number" maxlength="1" pattern=\"[0-9]*">
+          {{/squaretable}}
         {{/squaretable}}
-      {{/squaretable}}
       <div id="others-game-states"></div>
+      </div>
   </script>
 
   <!-- template for listing all available games with status -->
   <script id="game-select-template" type="text/x-handlebars-template">
-    <h1>Select a game:</h1>
-    <ul id="games">
-    {{#each gameStates}}
-      <li>
-        <a class="{{stateName}}" href="/#game/{{id}}">{{game.name}}</a>
-      </li>
-    {{/each}}
-  </script>
-
-  <!-- template user information -->
-  <script id="user-template" type="text/x-handlebars-template">
-    <span>{{fullName}}</span>
-    <img src="{{thumbnail}}">
+    <div class="app-section" id="new-game-option  ">
+      <ul class="app-list">
+        <li>
+          <a href="/#new"><i class="fa fa-plus-circle"></i> New game</a>
+        </li>
+      </ul>
+    </div>
+    <div class="app-section" id="games">
+      <h1>Your games</h1>
+      {{#if gameStates}}
+        <ul class="app-list">
+        {{#each gameStates}}
+          <li>
+            <a class="{{stateName}}" href="/#game/{{id}}"><i class="fa fa-asterisk"></i> {{game.name}}</a>
+          </li>
+        {{/each}}
+        </ul>
+      {{else}}
+        <i class="empty-list">Currently no games, click "New Game"!</i></i>
+      {{/if}}
+    </div>
+    <div class="app-section" id="invitations"></div>
   </script>
 
   <!-- template for single invititation -->
   <script id="invitation-template" type="text/x-handlebars-template">
-    <strong>{{invitation.game.name}}</strong> by ({{invitation.inviter.username}})
+    <div><i class="fa fa-question-circle"></i>
+      <strong>{{invitation.game.name}}</strong> by {{invitation.inviter.username}}
+      <a class="app-button left accept"><i class="fa fa-check-circle"></i></a>
+      <a class="app-button left reject"><i class="fa fa-times-circle"></i></a>
     <br>
-    <a class="accept">Accept</a> - <a class="reject">Reject</a>
+    </div>
   </script>
 
 </head>
 <body>
-  <header id="page-header">
-    <h1>SUDOKU</h1>
-    <div id="user"></div>
-  </header>
-  <div id="content">
-    <nav>
-      <ul>
-        <li><a class="button" href="#all">All</a></li>
-        <li><a class="button" href="#new">New</a></li>
-        <li><a class="button" href="#invitations">Invitations</a></li>
-      </ul>
-    </nav>
+  <div class="app-page"  data-page="home">
+    <div class="app-topbar">
+      <div class="app-title">SUDOKU</div>
+    </div>
+    <div class="app-content" id="home">
+      <div id="board"></div>
+    </div>
   </div>
-  <footer>
+    <div class="app-page"  data-page="game">
+    <div class="app-topbar">
+      <div class="left app-button back-home"><a href="#"><i class="fa fa-chevron-left"> </i></a></div>
+      <div class="app-title"></div>
+      <div class="right app-button"><a href="#"></a></div>
+    </div>
+    <div class="app-content" id="game">
+      <div id="board"></div>
+    </div>
+  </div>
+    <div class="app-page"  data-page="new-game">
+    <div class="app-topbar">
+      <div class="left app-button back-home"><a href="#"><i class="fa fa-chevron-left"> </i></a></div>
+      <div class="app-title">New Game</div>
+    </div>
+    <div class="app-content" id="new-game">
+      <div id="board"></div>
+      </div>
+    </div>
+  </div>
+  <!--footer>
     <span>Created with &hearts; in Germany.</span>
-  </footer>
-
+  </footer-->
+  <script src="http://zeptojs.com/zepto.min.js"></script>
+  <script src="http://cdn.kik.com/app/1/app.js"></script>
   <script src="/javascripts/main.js"> </script>
 </body>
 </html>

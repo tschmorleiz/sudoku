@@ -5,11 +5,7 @@ Sudoku.Views = Sudoku.Views || {};
 Sudoku.Views.NewGame = Backbone.View.extend({
 
     events: {
-        'click input[type="submit"]': 'create'
-    },
-
-    initialize:function (options) {
-        this.render();
+        'click #create': 'create'
     },
 
     render:function () {

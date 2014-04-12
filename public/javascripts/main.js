@@ -3,7 +3,6 @@ var Sudoku = Sudoku || {};
 Sudoku.Router = Backbone.Router.extend({
   routes: {
     '': 'home',
-    'all' : 'all',
     'new': 'newGame',
     'game/:id': 'game',
     'invitations': 'invitations',
@@ -13,16 +12,19 @@ Sudoku.Router = Backbone.Router.extend({
     kik.browser.setOrientationLock('portrait');
   },
 
-  switchView: function(user, newView) {
-    if (!this.userView) {
-      this.userView = new Sudoku.Views.User({model:user});
-    }
+  switchView: function(user, newView, page, transition) {
+    var that = this;
     if (this.currentView) {
       this.currentView.unbind();
       this.currentView.remove();
+    } else {
+      transition = 'fade';
     }
-    $('#content').append(newView.el);
-    this.currentView = newView;
+    App.load(page, transition, function() {
+      newView.render();
+      $('#' + page).html(newView.el);
+      that.currentView = newView;
+    });
   },
 
 
@@ -30,24 +32,11 @@ Sudoku.Router = Backbone.Router.extend({
   home: function() {
     var that = this;
     Sudoku.Models.User.current(function(user) {
-      // decide where to go
-      var view;
-      if (user.get('gameStates').length > 0) {
-         that.navigate('#all', true);
-      } else {
-         that.navigate('#new', true);
-      }
-    })
-  },
-
-  all: function() {
-    var that = this;
-    Sudoku.Models.User.current(function(user) {
       var view = new Sudoku.Views.GameSelect({
         collection: user.get('gameStates'), 
         el: $('<article id="board">')
       });
-      that.switchView(user, view);
+      that.switchView(user, view, 'home', 'slide-right');
     })
   },
 
@@ -58,7 +47,7 @@ Sudoku.Router = Backbone.Router.extend({
       var view = new Sudoku.Views.NewGame({
         el: $('<article id="board">')
       });
-      that.switchView(user, view);
+      that.switchView(user, view, 'new-game', 'slide-left');
     })
   },
 
@@ -74,27 +63,12 @@ Sudoku.Router = Backbone.Router.extend({
             model: gameState,
             el: $('<article id="board">')
           });
-          that.switchView(user, view);
+          that.switchView(user, view, 'game', 'slide-left');
         }
       })
     })
   },
 
-  invitations: function() {
-    var that = this;
-    Sudoku.Models.User.current(function(user) {
-      var invitations = new Sudoku.Models.Invitations();
-      invitations.fetch({
-        success: function(invitations) {
-          var view = new Sudoku.Views.Invitations({
-            collection: invitations,
-            el: $('<article id="board">')
-          });
-          that.switchView(user, view);
-        }
-      })
-    })
-  }
 })
 
 $(function(){

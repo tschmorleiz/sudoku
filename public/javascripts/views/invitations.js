@@ -27,7 +27,7 @@ Sudoku.Views.Invitation = Backbone.View.extend({
     this.model.reject(function() {
         that.unbind();
         that.remove();
-        window.location = "#all"
+        window.location = "#"
     });
   },
  
@@ -42,18 +42,14 @@ Sudoku.Views.Invitation = Backbone.View.extend({
 // view for invitations
 Sudoku.Views.Invitations = Backbone.View.extend({
 
-    initialize: function() {
-        this.render();
-    },
-
     render: function () {
         var that = this;
-        $(this.el).html('<h1>Your invitations:</h1>');
+        $(this.el).html('<h1>Your invitations</h1>');
         
         if (this.collection.isEmpty()) {
-          $(this.el).append("<i>Currently no invitations</i>");  
+          $(this.el).append('<i class="empty-list">Currently no invitations</i>');  
         } else {
-          var list = $('<ul id="invitations">')
+          var list = $('<ul class="app-list" id="invitations">')
           this.collection.each(function(invitation) {
             var invitationView = new Sudoku.Views.Invitation({model: invitation, el: $('<li>')});
             invitationView.render();
