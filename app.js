@@ -10,7 +10,7 @@ var user = require('./routes/user');
 var gameState = require('./routes/gameState');
 
 var app = express();
-mongoose.connect('mongodb://localhost/sudoku');
+mongoose.connect(process.env.MONGOHQ_URL || 'mongodb://localhost/sudoku');
 
 // configuration
 app.configure(function(){
