@@ -1,3 +1,4 @@
 node_modules
 ssl
 npm-debug.log
+public/javascripts/*.min.js

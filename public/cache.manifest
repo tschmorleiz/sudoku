@@ -2,17 +2,9 @@ CACHE MANIFEST
 # v0
 
 # JAVASCRIPT
-/javascripts/handlebars.js
-/javascripts/helpers/handlebars-helpers.js
-/javascripts/models/user.js
-/javascripts/models/game.js
-/javascripts/models/invitation.js
-/javascripts/models/game-state.js
-/javascripts/views/game-state.js
-/javascripts/views/new-game.js
-/javascripts/views/invitations.js
-/javascripts/views/game-select.js
-/javascripts/main.js
+/javascripts/app.min.js
+/javascripts/main.min.js
+
 
 # CSS
 /stylesheets/style.css
