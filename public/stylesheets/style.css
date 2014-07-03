@@ -66,10 +66,10 @@ nav li {
 
 .boxes {
   clear:both;
-  margin-left:auto;
-  margin-right:auto;
-  margin-bottom:15px;
-  border-spacing:1px;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  margin-bottom:15px !important;
+  border-spacing:1px !important;
 }
 
 .boxes input {
@@ -152,6 +152,10 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
 
 .boxes.progress {
   box-shadow:0 0 6px #000;
+}
+
+.app-section {
+  margin: 8px !important;
 }
 
 .app-list {

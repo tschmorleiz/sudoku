@@ -4,11 +4,19 @@ CACHE MANIFEST
 # JAVASCRIPT
 /javascripts/app.min.js
 /javascripts/main.min.js
+//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js
+//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js
+//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js
+//cdn.kik.com/kik/1.0.0/kik.js
+//zeptojs.com/zepto.min.js
+//cdn.kik.com/app/2.0.1/app.min.js
+/javascripts/main.min.js
 
 
 # CSS
 /stylesheets/style.css
-/stylesheets/default.css
+//cdn.kik.com/app/2.0.1/app.min.css
+//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css
 
 # IMAGES
 /images/wood.png
